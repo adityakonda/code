@@ -1,0 +1,8 @@
+--	Create ODS Database
+	CREATE DATABASE IF NOT EXISTS retail_ODS;
+	
+--	Create EDW Database
+	CREATE DATABASE IF NOT EXISTS retail_ODS;
+	
+--	Describe table
+	DESCRIBE FORMATTED <table_name>

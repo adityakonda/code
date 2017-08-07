@@ -1,3 +1,31 @@
+-->	sqoop list-databases/ sqoop list-tables:
+		Listing Database & Tables
+
+--> sqoop eval:
+		to test SQL query (run any query from source table)
+		
+--> sqoop sqoop import-all-tables:
+		imports all table from source with specified file format, mappers
+		
+-->	sqoop import using joins & groupby
+		
+	sqoop import \
+	--connect "jdbc:mysql://quickstart.cloudera:3306/retail_db" \
+	--username=datafactz \
+	--password=password \
+	--split-by c.customer_city\
+	--target-dir=/user/cloudera/test123 \
+    --query 'SELECT c.customer_city, c.customer_state, count(*) FROM orders o join customers c ON (o.order_customer_id = c.customer_id) WHERE $CONDITIONS GROUP BY c.customer_state, c.customer_city' 
+
+
+-->		Sqoop can import to hive, HBase & HDFS
+--> 	Sqoop import has many options when compared to sqoop export
+-->
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+	
+---------------------------------------------------------------------------------------------------------------------------------------------
+
 sqoop list-databases \
   --connect "jdbc:mysql://quickstart.cloudera:3306" \
   --username datafactz \
@@ -246,7 +274,7 @@ create table departments as select * from retail_db.departments where 1=2;
 exit;
 
 --For certification change database name retail_rpt_db to retail_db
-sqoop export 
+sqoop export \
 	   --connect "jdbc:mysql://quickstart.cloudera:3306/retail_rpt_db" \
        --username datafactz \
        --password password \

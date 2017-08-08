@@ -34,4 +34,24 @@ FROM (
 	)
 GROUP BY d.department_name;
 
+-- 5. PUSH STARTEGY -- Exproting data to specified path with given specification
+
+SELECT * FROM categories INTO outfile '/tmp/categories01.psv' fields terminated by '|' lines terminated by '\n';
+
+SELECT * FROM categories INTO outfile '/tmp/categories01.csv' fields terminated by ',' lines terminated by '\n';
+
+
+########Copy data from MySQL to local file system
+
+#Enable file_priv to retail_dba
+mysql -u root -p #if password enabled, else "mysql -u root"
+update mysql.user set file_priv = 'Y' where user = 'retail_dba';
+commit;
+exit;
+#On OS prompt, run
+service mysqld restart
+mysql -u retail_dba -p #prompts for password and launches mysql CLI
+use retail_db;
+
+
 

@@ -1,0 +1,6 @@
+Hive:
+
+3 databases in HIVE
+	retail_edw:
+	retail_ods: will be same as source tables. can have audit column
+	retail_stage: 

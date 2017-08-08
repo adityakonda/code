@@ -1,3 +1,9 @@
+Sqoop Notes:
+
+	pull strategy: use sqoop to connect the source system & load data into hadoop.
+
+	push strategy: source system will push the data on staging servers from there we can load data into hadoop.
+
 -->	sqoop list-databases/ sqoop list-tables:
 		Listing Database & Tables
 
@@ -20,7 +26,17 @@
 
 -->		Sqoop can import to hive, HBase & HDFS
 --> 	Sqoop import has many options when compared to sqoop export
--->
+--> 
+
+Mappers:
+
+	By default mapper is 4. If we give mapper as n it will the primary key & will compute max and min value of it and will create n buckets. Without primary key it will take as 1 mapper 
+
+Sqoop increment load:
+	--check-column:	which column should we consider. 
+	--incremental: 
+	--last-value: value of last-value shouldincrement.
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 	

@@ -6,3 +6,10 @@
 	
 --	Describe table
 	DESCRIBE FORMATTED <table_name>
+	
+-- Hive Left Join:
+	join happens in reducer. we can restrict to map 
+	SELECT *
+	FROM orders o left outer join order_items oi
+	ON o.order_id = oi.order_item_order_id
+	LIMIT 10;

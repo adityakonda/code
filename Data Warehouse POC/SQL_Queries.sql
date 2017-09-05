@@ -34,7 +34,25 @@ FROM (
 	)
 GROUP BY d.department_name;
 
--- 5. PUSH STARTEGY -- Exproting data to specified path with given specification
+-- 5. How each department is performing on a particular days 
+
+use retail_db;
+SELECT department_name, order_date, sum(order_item_subtotal)
+FROM(
+departments d JOIN categories c ON d.department_id = c.category_department_id
+JOIN
+products p ON p.product_category_id = c.category_id
+JOIN 
+order_items oi ON oi.order_item_product_id = p.product_id
+JOIN 
+orders o ON o.order_id = oi.order_item_order_id
+)
+GROUP BY d.department_name, o.order_date
+ORDER BY o.order_date, 3 desc;
+
+
+
+-- 6. PUSH STARTEGY -- Exproting data to specified path with given specification
 
 SELECT * FROM categories INTO outfile '/tmp/categories01.psv' fields terminated by '|' lines terminated by '\n';
 

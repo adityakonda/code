@@ -1,0 +1,14 @@
+search all UDF functions:
+
+	show functions;
+	
+search UDF which has date 
+	
+	show functions ".*date.*";
+	
+	describe function datediff;
+	
+	describe function extended datediff;
+
+
+	

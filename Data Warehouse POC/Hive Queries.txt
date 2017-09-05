@@ -13,3 +13,17 @@
 	FROM orders o left outer join order_items oi
 	ON o.order_id = oi.order_item_order_id
 	LIMIT 10;
+	
+-- In Progress -- Not fully tested (Lesson 20th)
+
+SELECT department_name, order_date, sum(order_item_subtotal) order_item_subtotal
+FROM
+departments d JOIN categories c ON d.department_id = c.category_department_id
+JOIN
+products p ON p.product_category_id = c.category_id
+JOIN 
+order_items oi ON oi.order_item_product_id = p.product_id
+JOIN 
+orders o ON o.order_id = oi.order_item_order_id
+GROUP BY d.department_name, o.order_date
+ORDER BY o.order_date, order_item_subtotal desc;
